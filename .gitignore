@@ -1,4 +1,4 @@
-/node_modules
-/cypress/videos
-/reports
+node_modules
+cypress/videos
+reports
 .vscode
