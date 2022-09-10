@@ -23,6 +23,8 @@ describe("Account: Recuperar contraseña Admin", () =>{
     {
         cy.visit(url1)
         cy.url().should("include","login")
+        cy.contains("Forgot your password?").click()
+        cy.url().should("include", "requestPasswordResetCode")
     })
 
     it("TC01: Validar recuperar contraseña correctamente", () => {
@@ -34,27 +36,28 @@ describe("Account: Recuperar contraseña Admin", () =>{
     Then debería aparecer un mensaje indicando "Reset Password link sent successfully"
     And debería visualizar el texto "A reset password link has been sent to you via email. You can follow that link and select a new password"
     */
-        cy.contains("Forgot your password?").click()
-        cy.url().should("include", "requestPasswordResetCode")
         cy.get(".oxd-input").type(user).should("have.value", user)
         cy.get('.oxd-button--secondary').click()
         cy.contains("Reset Password link sent successfully")
     })
 
-/*
-    it("TC02: Validar No poder recuperar contraseña cuando el campo username está vacío", () => {
-/*
-Given el usuario tiene una cuenta creada previamente
-And el usuario ingresa en la sección de recuperación de contraseña
-When el usuario olvida ingresar su username en el input
-And hace click en "Reset Password"
-Then debería aparecer un mensaje de error como "Required" debajo del input
-And no debería poder enviarse la solicitud de cambio de contraseña
 
-        
+    it("TC02: Validar No poder recuperar contraseña cuando el campo username está vacío", () => {
+    /*
+    Given el usuario tiene una cuenta creada previamente
+    And el usuario ingresa en la sección de recuperación de contraseña
+    When el usuario olvida ingresar su username en el input
+    And hace click en "Reset Password"
+    Then debería aparecer un mensaje de error como "Required" debajo del input
+    And no debería poder enviarse la solicitud de cambio de contraseña
+    */
+
+        cy.get('.oxd-button--secondary').click()
+        cy.contains("Required").should('be.visible')
+        cy.url().should("include","requestPasswordResetCode")
     })
 
-
+ /*   
     it("TC03: Validar No poder recuperar contraseña cuando se ingresa usuario no válido", () => {
 
 Given el usuario tiene una cuenta creada previamente
