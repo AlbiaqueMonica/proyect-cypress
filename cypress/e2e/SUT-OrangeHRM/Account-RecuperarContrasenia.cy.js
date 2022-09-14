@@ -16,7 +16,7 @@ Password : admin123
 
 describe("Account: Recuperar contraseña Admin", () =>{
     const user = "Admin"
-    const pass = "admin123"
+    //const pass = "admin123"
     const url1 ="https://opensource-demo.orangehrmlive.com/" 
     const lusers = [1234, 'upex', '#%&/' ]
    
@@ -60,22 +60,35 @@ describe("Account: Recuperar contraseña Admin", () =>{
 
    
     it("TC03: Validar No poder recuperar contraseña cuando se ingresa usuario no válido", () => {
-/*
-Given el usuario tiene una cuenta creada previamente
-And el usuario ingresa en la sección de recuperación de contraseña
-When el usuario ingresa un username inválido
-And hace click en "Reset Password"
-Then debería aparecer un mensaje de error
-And no debería poder enviarse la solicitud de cambio de contraseña
+    /*
+    Given el usuario tiene una cuenta creada previamente
+    And el usuario ingresa en la sección de recuperación de contraseña
+    When el usuario ingresa un username inválido
+    And hace click en "Reset Password"
+    Then debería aparecer un mensaje de error
+    And no debería poder enviarse la solicitud de cambio de contraseña
 
-  Examples:
-    | invalid |
-    | 1234 |
-    | upex |
-    | #%&/ |
- */
-    cy.get(".oxd-input").type(lusers(0)).should("have.value", lusers(0))
-    cy.get('.oxd-button--secondary').click()
+    Examples:
+        | invalid |
+        | 1234 |
+        | upex |
+        | #%&/ |
+    */
+   // cy.get(".oxd-input").type(lusers[0]).should("have.value", lusers[0])
+
+
+
+    cy.get(lusers).each(( item ) => {
+        cy.get(".oxd-input").type(item).should("have.value", item)
+        cy.get('.oxd-button--secondary').click()
+        
+        cy.contains("Reset Password link sent successfully").should("not.be.visible")
+        
+        cy.visit(url1)
+        cy.url().should("include","login")
+        cy.contains("Forgot your password?").click()
+        cy.url().should("include", "requestPasswordResetCode")
+    })
         
     })
 
