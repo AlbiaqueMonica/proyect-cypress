@@ -78,18 +78,48 @@ describe("Account: Recuperar contraseña Admin", () =>{
 
 
 
-    cy.get(lusers).each(( item ) => {
+    cy.get(lusers).each(( item ).then => {
         cy.get(".oxd-input").type(item).should("have.value", item)
         cy.get('.oxd-button--secondary').click()
         
-        cy.contains("Reset Password link sent successfully").should("not.be.visible")
+        cy.get(lusers).then(function(item){
+            cy.contains("Reset Password link sent successfully").should("not.be.visible")
+        })
         
-        cy.visit(url1)
-        cy.url().should("include","login")
-        cy.contains("Forgot your password?").click()
-        cy.url().should("include", "requestPasswordResetCode")
+            cy.visit(url1)
+            cy.url().should("include","login")
+            cy.contains("Forgot your password?").click()
+            cy.url().should("include", "requestPasswordResetCode")
+              
+        
+       
     })
-        
+      
+    /*
+    cy.get('@productosPopulares')
+            .find('.product-name')
+            .each(($el, index, $list) => {
+                
+                //Si buscara fijo una posición
+                // cy.get('@productosPopulares').eq(1).contains('Add to cart').click()
+
+                cy.get('@productosPopulares').eq(index).find('.price').then(function($el1){
+                    let precio = $el1.text()
+                    cy.log(precio)
+                    
+               
+                if($el.attr('title') === 'Printed Dress' && precio.includes('50.99')){
+                    cy.log('Se ha encontrado el elemento buscado')
+                    cy.log("Se ha encontrado el precio buscado")
+                    cy.get('@productosPopulares').eq(index).contains('Add to cart').click()
+                }
+            })
+            })
+            cy.get('h2 > .ajax_cart_product_txt').should('contain.text', "There is 1 item in your cart.")
+            .should('be.visible')
+           
+*/
+
     })
 
 })
