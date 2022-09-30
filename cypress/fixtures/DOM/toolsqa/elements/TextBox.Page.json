@@ -9,14 +9,7 @@
         "input": "#userEmail",
         "data": {
         "valid": "moni@upex.com",
-        "null": "",
-        "noAt": "moniupex.com",
-        "noName": "@upex.com",
-        "noDot": "moni@upexcom",
-        "noDomain": "moni@.com",
-        "noExt": "moni@upex.",
-        "oneExt": "moni@u.c",
-        "twoExt": "moni@upex.c"
+        "null": ""
         },
         "datainv": ["moniupex.com",
         "@upex.com",
@@ -24,8 +17,7 @@
         "moni@.com",
         "moni@upex.",
         "moni@u.c",
-        "moni@upex.c"]
-    
+        "moni@upex.c"]    
     },
 
     "currentAd": {
