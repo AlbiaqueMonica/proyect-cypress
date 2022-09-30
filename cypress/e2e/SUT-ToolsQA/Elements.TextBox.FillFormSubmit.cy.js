@@ -8,7 +8,7 @@ describe('US-GX-641-ToolsQA | Elements | Text Box: Fill form and Submit', () =>{
 	   
     })
 
-	it("TC01: Validar envío campos válidos aparezcan en la respuesta",  () => {
+	it("TC01: Validar envío con campos válidos que aparezcan en la respuesta",  () => {
 
 		cy.get('#userName').type("Matias")
 		cy.get('#userEmail').type("matias@gmail.com").click({force: true})
@@ -22,8 +22,9 @@ describe('US-GX-641-ToolsQA | Elements | Text Box: Fill form and Submit', () =>{
 		.should("contain", "Permananet Address :mypaddress" )
 		
 	})
-
-			it("TC02: Validar No Envío de formulario con Email inválido.", () =>{
+	
+	//TC usando Commands NoEnvíoDeFormularioMailInvalido()
+	it("TC02: Validar No Envío de formulario con Email inválido.", () =>{
 				// This field is invalid when:
 				// Does not contain “@”
 				// Does not contain (minimum) 1 alphanumeric character before “@”
@@ -31,16 +32,10 @@ describe('US-GX-641-ToolsQA | Elements | Text Box: Fill form and Submit', () =>{
 				// Does not contain “.” after: 1 alphanumeric character after “@”.
 				// Does not contain (minimum) 2 alphanumeric characters after “.”
 				//Mockup: “x@x.xx”
-				cy.fixture("DOM/toolsqa/Elements/TextBox.Page").then((the) =>{
-					the.email.datainv.forEach(element => {
-				cy.NoEnvíoDeFormularioMailInvalido(the.name.valid, element, the.currentAd.valid, the.permanentAd.valid)
-
-				cy.get(the.name.input).clear()
-				cy.get(the.email.input).clear()
-				cy.get(the.currentAd.input).clear()
-				cy.get(the.permanentAd.input).clear()
-				
-			})
+				cy.fixture("DOM/toolsqa/Elements/TextBox1.Page").then((the) =>{
+					
+				     cy.NoEnvíoDeFormularioMailInvalido()
+		
 			})
 		});
 
@@ -51,7 +46,7 @@ describe('US-GX-641-ToolsQA | Elements | Text Box: Fill form and Submit', () =>{
 
 	})
 
-})
+});
 
 
 
