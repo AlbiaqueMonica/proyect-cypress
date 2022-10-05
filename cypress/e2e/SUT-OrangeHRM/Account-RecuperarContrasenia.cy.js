@@ -19,7 +19,7 @@ describe("Account: Recuperar contraseña Admin", () =>{
     //const pass = "admin123"
     const url1 ="https://opensource-demo.orangehrmlive.com/" 
     const lusers = [1234, 'upex', '#%&/' ]
-   
+
     beforeEach("Precondición: Ir a la página de Radio Button", () =>
     {
         cy.visit(url1)
@@ -57,8 +57,7 @@ describe("Account: Recuperar contraseña Admin", () =>{
         cy.contains("Required").should('be.visible')
         cy.url().should("include","requestPasswordResetCode")
     })
-
-   
+    
     it("TC03: Validar No poder recuperar contraseña cuando se ingresa usuario no válido", () => {
     /*
     Given el usuario tiene una cuenta creada previamente
@@ -74,56 +73,25 @@ describe("Account: Recuperar contraseña Admin", () =>{
         | upex |
         | #%&/ |
     */
-   // cy.get(".oxd-input").type(lusers[0]).should("have.value", lusers[0])
 
 
-
-    cy.get(lusers).each(( item ).then => {
+    cy.get(lusers).each(( item => {
         cy.get(".oxd-input").type(item).should("have.value", item)
         cy.get('.oxd-button--secondary').click()
-        
+    
         cy.get(lusers).then(function(item){
-            cy.contains("Reset Password link sent successfully").should("not.be.visible")
-        })
-        
-            cy.visit(url1)
-            cy.url().should("include","login")
-            cy.contains("Forgot your password?").click()
-            cy.url().should("include", "requestPasswordResetCode")
-              
-        
-       
+        cy.contains("Reset Password link sent successfully").should("not.exist")
     })
-      
-    /*
-    cy.get('@productosPopulares')
-            .find('.product-name')
-            .each(($el, index, $list) => {
-                
-                //Si buscara fijo una posición
-                // cy.get('@productosPopulares').eq(1).contains('Add to cart').click()
+    
+        cy.visit(url1)
+        cy.url().should("include","login")
+        cy.contains("Forgot your password?").click()
+        cy.url().should("include", "requestPasswordResetCode")
 
-                cy.get('@productosPopulares').eq(index).find('.price').then(function($el1){
-                    let precio = $el1.text()
-                    cy.log(precio)
-                    
-               
-                if($el.attr('title') === 'Printed Dress' && precio.includes('50.99')){
-                    cy.log('Se ha encontrado el elemento buscado')
-                    cy.log("Se ha encontrado el precio buscado")
-                    cy.get('@productosPopulares').eq(index).contains('Add to cart').click()
-                }
-            })
-            })
-            cy.get('h2 > .ajax_cart_product_txt').should('contain.text', "There is 1 item in your cart.")
-            .should('be.visible')
-           
-*/
-
-    })
+    }) )  
 
 })
-
+})
 //________________________________________________________________________
 // Comando predeterminado para que no ocurran errores de excepciones:
 Cypress.on('uncaught:exception', (err, runnable) => {
