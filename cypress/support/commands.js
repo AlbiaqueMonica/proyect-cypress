@@ -38,8 +38,156 @@ Cypress.Commands.add("NoEnvíoDeFormularioMailInvalido", ()=>{
 				cy.get(the.email.input).clear()
 				cy.get(the.currentAd.input).clear()
 				cy.get(the.permanentAd.input).clear()
+		})
 	})
 })
+
+Cypress.Commands.add('recorrerTabList', () => {
+	cy.fixture("DOM/Iterations/Selectable1262.Page").then((the) => {
+        
+		the.list.contenedor.forEach((element, index) => {
+			cy.get(element).should('have.text', the.list.text[index]) // valida el texto
+			cy.get(element).should("not.have.class", "active")  //valida que por defecto no estén seleccionados
+			cy.get(element).should('have.css', 'background-color', 'rgb(255, 255, 255)') // valida que el color de fondo sea blanco
+			cy.get(element).should('have.css', 'color', 'rgb(73, 80, 87)') // valida que el color de fuente sea casi negro
+			//cy.get(element).should('have.css', 'color', 'black')// expected <li.mt-2.list-group-item.list-group-item-action> to have CSS property color with the value black, but the value was rgb(73, 80, 87)	
+			//Seleccionar uno por uno
+			cy.get(element).click()
+			//Validar que quede activo
+			cy.get(element).should("have.class", "active")  
+			//Validar que el fondo sea azul (#007bff)
+			cy.get(element).should('have.css', 'background-color', 'rgb(0, 123, 255)') 
+			// Validar que el color de fuente sea blanco (#fff)
+			cy.get(element).should('have.css', 'color', 'rgb(255, 255, 255)') 
+		})
+	})
+})
+
+Cypress.Commands.add('deseleccionarTabList', () => {
+	cy.fixture('DOM/Iterations/Selectable1262.Page').then((the) => {
+		the.list.contenedor.forEach((element, index) => {
+			//Seleccionar uno por uno
+			cy.get(element).click()
+			//Validar que quede activo
+			cy.get(element).should("not.have.class", "active")  
+			//Validar que el fondo sea blanco (#fff)
+			cy.get(element).should('have.css', 'background-color', 'rgb(255, 255, 255)') 
+			// Validar que el color de fuente sea casi negro
+			cy.get(element).should('have.css', 'color', 'rgb(73, 80, 87)') 
+		
+		})
+	})
+})
+
+Cypress.Commands.add('recorrerTabGrid', () => {
+	
+	cy.fixture('DOM/Iterations/Selectable1262.Page').then((the) => {
+		let i = 0
+		the.grid.filas.forEach((element, index) => {
+			let item = ""
+			if (element == "#row1"){
+				the.grid.numeros1.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row1 > :nth-child(1)"
+					cy.get(item).should('have.text', num) // valida el texto
+					cy.get(item).should("not.have.class", "active")  //valida que por defecto no estén seleccionados
+					cy.get(item).should('have.css', 'background-color', 'rgb(255, 255, 255)') // valida que el color de fondo sea blanco
+					cy.get(item).should('have.css', 'color', 'rgb(73, 80, 87)') // valida que el color de fuente sea casi negro
+					cy.get(item).click()
+				})
+			}			
+
+			if (element == "#row2"){
+				the.grid.numeros2.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row1 > :nth-child(1)"
+					cy.get(item).should('have.text', num) // valida el texto
+					cy.get(item).should("not.have.class", "active")  //valida que por defecto no estén seleccionados
+					cy.get(item).should('have.css', 'background-color', 'rgb(255, 255, 255)') // valida que el color de fondo sea blanco
+					cy.get(item).should('have.css', 'color', 'rgb(73, 80, 87)') // valida que el color de fuente sea casi negro
+					cy.get(item).click()
+				})
+			}			
+
+			if (element == "#row3"){
+				the.grid.numeros3.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row1 > :nth-child(1)"
+					cy.get(item).should('have.text', num) // valida el texto
+					cy.get(item).should("not.have.class", "active")  //valida que por defecto no estén seleccionados
+					cy.get(item).should('have.css', 'background-color', 'rgb(255, 255, 255)') // valida que el color de fondo sea blanco
+					cy.get(item).should('have.css', 'color', 'rgb(73, 80, 87)') // valida que el color de fuente sea casi negro
+					cy.get(item).click()
+				})
+			}			
+			
+		})
+	})
+})
+
+Cypress.Commands.add('deseleccionarTabGrid2', () => {
+    cy.fixture('DOM/Iterations/Selectable1262.Page').then((the) => {
+
+        the.grid.filas.forEach((element, index) => {
+            let item = ""
+            the.grid.filas[index].forEach((num, k) => {	
+                item = element + the.grid.child[k]
+            //item = "#row1 > :nth-child(k)"
+                cy.get(item).should("have.class", "active")  //valida que estén seleccionados
+                cy.get(item).should('have.css', 'background-color', 'rgb(0, 123, 255)') // valida que el color de fondo sea azul
+                cy.get(item).should('have.css', 'color', 'rgb(255, 255, 255)') // valida que el color de fuente sea blanco
+                cy.get(item).click()
+            })
+
+        })
+
+    })
+
+
+})
+
+Cypress.Commands.add('deseleccionarTabGrid', () => {
+	
+	cy.fixture('DOM/Iterations/Selectable1262.Page').then((the) => {
+		
+		the.grid.misfilas.forEach((element, index) => {
+			let item = ""
+
+			if (element == "#row1"){
+				the.grid.numeros1.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row1 > :nth-child(k)"
+					cy.get(item).should("have.class", "active")  //valida que estén seleccionados
+					cy.get(item).should('have.css', 'background-color', 'rgb(0, 123, 255)') // valida que el color de fondo sea azul
+					cy.get(item).should('have.css', 'color', 'rgb(255, 255, 255)') // valida que el color de fuente sea blanco
+					cy.get(item).click()
+				})
+			}			
+
+			if (element == "#row2"){
+				the.grid.numeros2.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row2 > :nth-child(k)"
+				cy.get(item).should("have.class", "active")  //valida que estén seleccionados
+				cy.get(item).should('have.css', 'background-color', 'rgb(0, 123, 255)') // valida que el color de fondo sea azul
+				cy.get(item).should('have.css', 'color', 'rgb(255, 255, 255)') // valida que el color de fuente sea blanco
+				cy.get(item).click()
+				})
+			}			
+
+			if (element == "#row3"){
+				the.grid.numeros3.forEach((num, k) => {	
+					item = element + the.grid.child[k]
+				//item = "#row3> :nth-child(k)"
+				cy.get(item).should("have.class", "active")  //valida que estén seleccionados
+				cy.get(item).should('have.css', 'background-color', 'rgb(0, 123, 255)') // valida que el color de fondo sea azul
+				cy.get(item).should('have.css', 'color', 'rgb(255, 255, 255)') // valida que el color de fuente sea blanco
+				cy.get(item).click()
+				})
+			}			
+			
+		})
+	})
 })
 
 // -- This is a parent command --
