@@ -9,16 +9,13 @@
     },
     "grid": {
         "tab": "#demo-tab-grid",
-        "filas": ["#row1", "#row2", "#row3"],   
-        "misfilas": {
+        "misfilas": [{
             "#row1":["One", "Two", "Three"],
             "#row2":["Four", "Five", "Six"],
             "#row3":["Seven", "Eight", "Nine"] 
-        },
-        "child":  [" > :nth-child(1)", " > :nth-child(2)", " > :nth-child(3)"], 
-        "numeros1": ["One", "Two", "Three"],
-        "numeros2":["Four", "Five", "Six"],
-        "numeros3": ["Seven", "Eight", "Nine"] 
+        }],
+        "child":  [" > :nth-child(1)", " > :nth-child(2)", " > :nth-child(3)"]
+        
 
     }
-}
+}  

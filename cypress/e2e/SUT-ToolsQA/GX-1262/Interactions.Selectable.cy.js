@@ -1,9 +1,10 @@
+///<reference types = "Cypress"/>
 
 describe("Tools QA | Interactions | Selectable",{ keystrokeDelay: 800 }, () =>
 { 
 	let the;
     before("Load Data", () => {
-        cy.fixture("DOM/Iterations/Selectable1262.Page").then((data) => {
+        cy.fixture("DOM/toolsqa/Iterations/Selectable1262.Page.json").then((data) => {
             the = data;
         })
     })
@@ -33,7 +34,7 @@ describe("Tools QA | Interactions | Selectable",{ keystrokeDelay: 800 }, () =>
 		cy.get(the.grid.tab).click()
 		cy.recorrerTabGrid()
 		cy.deseleccionarTabGrid()
-		cy.deseleccionarTabGrid2()
+		
 	})
 
 
