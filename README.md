@@ -32,7 +32,8 @@
    ![image](https://user-images.githubusercontent.com/72052340/193977483-7e915faf-29c0-4848-b1aa-92fda34b3d08.png)
 
                
-               
+                              ✨ Sección Selectable
               
-              
+   ![image](https://user-images.githubusercontent.com/72052340/197097886-573bcea4-0e20-437b-99a9-81ea553a27c8.png)
+
               
