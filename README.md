@@ -35,5 +35,12 @@
                               ✨ Sección Selectable
               
    ![image](https://user-images.githubusercontent.com/72052340/197097886-573bcea4-0e20-437b-99a9-81ea553a27c8.png)
+   
+   🐱‍ https://www.upexwork.com/
+   
+                              ✨ Land Page - CTA - Sign-Up UPEX
+   
+   ![image](https://user-images.githubusercontent.com/72052340/207959149-64c6a6f2-ea30-4cd6-b2ca-d4dc26814193.png)
+
 
               
