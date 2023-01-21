@@ -1,16 +1,18 @@
-//https://example.cypress.io/todo
-
-describe('Ejercicio1 Example Todo app', ()=>{
-
-    beforeEach(() =>{
-        cy.visit("https://example.cypress.io/todo")
+describe("Home Free Range Tester", () => {
+    beforeEach(() => {
+        cy.visit("https://www.freerangetesters.com/")
     })
 
-    it("TC01: prueba", ()=>{
-        cy.url().should("include","todo")
+
+    it("TC01: Should have a title", () => {
+        cy.url().should('include', 'testers')
+        cy.title().should('include', 'Free Range Testers')
     })
+
+
+
+
 })
-
 
 //________________________________________________________________________
 // Comando predeterminado para que no ocurran errores de excepciones:
