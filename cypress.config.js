@@ -13,5 +13,17 @@ module.exports = defineConfig({
       //return require('./cypress/plugins/index.js')(on, config)
     },
     specPattern: ['**/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
+    baseUrl: "https://demo.testim.io/",
   },
+  env: {
+    userLogin: {
+      username: "usuario",
+      password: "moni1234",
+      
+    },
+    endpoints: {
+      LoginSB: "/login",
+    }
+
+  }
 });
