@@ -1,10 +1,12 @@
+import { ebutton } from "../../../cypress/support/pages/ElementsButtons.Page";
+
 describe('ToolsQA | Elements | Buttons', () =>{
     beforeEach(()=>{
         cy.visit('https://demoqa.com/buttons')
         cy.url().should("contain", "buttons")
     })
 
-
+    context("TC's sin POM", () => {
     it('8020 | TC 01: Validar “You have done a double click“', () => {
         cy.get('#doubleClickBtn').dblclick()
         cy.get('#doubleClickMessage').should('be.visible')
@@ -38,6 +40,54 @@ describe('ToolsQA | Elements | Buttons', () =>{
         cy.get('#doubleClickMessage').should('not.exist')
     })
 })
+
+    describe("Mismos TC's Con POM", () =>{
+        beforeEach(()=>{
+            cy.visit('https://demoqa.com/buttons')
+            cy.url().should("contain", "buttons")
+        })
+        
+        it('8020 | TC 01: Validar “You have done a double click“', () => {
+            ebutton.dClick()
+            cy.get('#doubleClickMessage').should('be.visible')
+            cy.get('#doubleClickMessage').should('have.text', 'You have done a double click')
+        })
+
+        it('8020 | TC 02 - Validar “You have done a right click”', () =>{
+            //ebutton.rclick()
+            cy.get('#rightClickBtn').rightclick()
+            cy.get('#rightClickMessage').should('be.visible')
+            cy.get('#rightClickMessage').should('have.text', 'You have done a right click')
+        })
+    
+        it('8020 | TC 03 - Validar “You have done a dynamic click”', () => {
+            ebutton.Click()
+            cy.get('#dynamicClickMessage').should('be.visible')
+            cy.get('#dynamicClickMessage').should('have.text', 'You have done a dynamic click')
+        })
+    
+        it('8020 | TC 04 - Validar no “Right Click Me“ con Click', () =>{
+            //cy.get('#rightClickBtn').click()
+            ebutton.clickEnrClick()
+            cy.get('#rightClickMessage').should('not.exist')
+        })
+        
+        it('8020 | TC 05 - Validar no “Right Click Me“ cuando doble click', () =>{
+            //cy.get('#rightClickBtn').dblclick()
+            ebutton.dClickInrClick()
+            cy.get('#rightClickMessage').should('not.exist')
+        })
+    
+        it('8020 | TC 06: Validar no “You have done a double click“ cuando un Click', () => {
+            //cy.get('#doubleClickBtn').click()
+            ebutton.clickIndClick()
+            cy.get('#doubleClickMessage').should('not.exist')
+        })
+    })
+
+})
+
+
 
 //________________________________________________________________________
 // Comando predeterminado para que no ocurran errores de excepciones:
