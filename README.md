@@ -6,6 +6,8 @@
 
       🐱‍🏍 https://pushing-front.vercel.app/
 
+                         ✨ Online Shop | Shopping Cart
+
 Cypress_ShoppingCart
 Pre-Entrega Curso Cypress Fabricio Otranto
 
@@ -21,7 +23,8 @@ Pre-Entrega Curso Cypress Fabricio Otranto
 
 ✨ Hacer click en "Show total price" y verificar el precio acumulado de los 2 productos
 
-image
+![image](https://github.com/AlbiaqueMonica/proyect-cypress/assets/72052340/4823da5c-577b-4cdd-9490-c4502c0c1e66)
+
 
 
       🐱‍🏍 https://demoqa.com/buttons
