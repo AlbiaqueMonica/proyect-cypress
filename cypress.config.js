@@ -23,7 +23,7 @@ module.exports = defineConfig({
     },
     endpoints: {
       LoginSB: "/login",
-    }
-
+    },
+    url: 'https://pushing-front.vercel.app/'
   }
 });

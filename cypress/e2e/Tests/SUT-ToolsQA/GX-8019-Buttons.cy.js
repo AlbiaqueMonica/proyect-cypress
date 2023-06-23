@@ -1,4 +1,4 @@
-import { ebutton } from "../../../cypress/support/pages/ElementsButtons.Page";
+import { ebutton } from "../../../support/pages/ElementsButtons.Page"
 
 describe('ToolsQA | Elements | Buttons', () =>{
     beforeEach(()=>{

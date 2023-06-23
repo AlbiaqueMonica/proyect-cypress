@@ -4,6 +4,25 @@
 
 <b>Test realizados:</b>
 
+      🐱‍🏍 https://pushing-front.vercel.app/
+
+Cypress_ShoppingCart
+Pre-Entrega Curso Cypress Fabricio Otranto
+
+✨ Ingresar en la pagina de pushing IT.
+
+✨ Ingresar al sistema con datos validos.
+
+✨ Dirigirse al modulo "Online Shop".
+
+✨ Elegir 2 productos a elección y añadirlos al carrito.
+
+✨ Verificar el nombre y precio de los dos productos.
+
+✨ Hacer click en "Show total price" y verificar el precio acumulado de los 2 productos
+
+image
+
 
       🐱‍🏍 https://demoqa.com/buttons
       
